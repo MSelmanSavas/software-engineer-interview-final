@@ -84,6 +84,8 @@ sealed class OrthagonalMatchFinder : IMatchFinder
         Vector2Int firstBoardItemIndex = new Vector2Int(first.X, first.Y);
         Vector2Int secondBoardItemIndex = new Vector2Int(second.X, second.Y);
 
+        #region First Item Match Check with horizontal directions
+
         foundMatchedBoardItems.Add(firstBoardItem);
         // First board item match checks for horizontal directions
         FindMatchesInDirections(firstBoardItem, secondBoardItemIndex, secondBoardItem, firstBoardItemIndex, _horizontalDirections, foundMatchedBoardItems);
@@ -93,6 +95,10 @@ sealed class OrthagonalMatchFinder : IMatchFinder
             foundMatchDatas.Add(new MatchData(first, second, foundMatchedBoardItems));
             foundMatchDatas.Add(new MatchData(second, first, foundMatchedBoardItems));
         }
+
+        #endregion
+
+        #region First Item Match Check with vertical directions
 
         foundMatchedBoardItems.Clear();
 
@@ -106,6 +112,10 @@ sealed class OrthagonalMatchFinder : IMatchFinder
             foundMatchDatas.Add(new MatchData(second, first, foundMatchedBoardItems));
         }
 
+        #endregion
+
+        #region Second Item Match Check with horizontal directions
+
         foundMatchedBoardItems.Clear();
 
         foundMatchedBoardItems.Add(secondBoardItem);
@@ -118,6 +128,10 @@ sealed class OrthagonalMatchFinder : IMatchFinder
             foundMatchDatas.Add(new MatchData(second, first, foundMatchedBoardItems));
         }
 
+        #endregion
+
+        #region Second Item Match Check with vertical directions
+
         foundMatchedBoardItems.Clear();
 
         foundMatchedBoardItems.Add(secondBoardItem);
@@ -129,6 +143,8 @@ sealed class OrthagonalMatchFinder : IMatchFinder
             foundMatchDatas.Add(new MatchData(first, second, foundMatchedBoardItems));
             foundMatchDatas.Add(new MatchData(second, first, foundMatchedBoardItems));
         }
+
+        #endregion
 
         HashSetPool<BoardItem>.Release(foundMatchedBoardItems);
         return foundMatchDatas.Count > 0;
