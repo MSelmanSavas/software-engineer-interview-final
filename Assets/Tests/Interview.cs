@@ -67,7 +67,7 @@ namespace Tests
         }
 
         [Test]
-        public void Test_CheckMatchExist_FindMatch2()
+        public void Test_CheckMatchExist_FindMatch_2()
         {
             var boardHelper = BoardHelper.Instance;
             boardHelper.CreateBoard(4, 4);
@@ -105,7 +105,7 @@ namespace Tests
         }
 
         [Test]
-        public void Test_CheckMatchExist_CantFindMatch2()
+        public void Test_CheckMatchExist_CantFindMatch_2()
         {
             var boardHelper = BoardHelper.Instance;
             boardHelper.CreateBoard(4, 4);
@@ -144,7 +144,7 @@ namespace Tests
         }
 
         [Test]
-        public void Test_FindAllPossibleMatches2()
+        public void Test_FindAllPossibleMatches_8Match()
         {
             var boardHelper = BoardHelper.Instance;
             boardHelper.CreateBoard(4, 4);
@@ -164,7 +164,7 @@ namespace Tests
         }
 
         [Test]
-        public void Test_FindAllPossibleMatches3()
+        public void Test_FindAllPossibleMatches_4Match()
         {
             var boardHelper = BoardHelper.Instance;
             boardHelper.CreateBoard(4, 4);
@@ -185,7 +185,7 @@ namespace Tests
 
 
         [Test]
-        public void Test_FindAllPossibleMatches4()
+        public void Test_FindAllPossibleMatches_NoMatch()
         {
             var boardHelper = BoardHelper.Instance;
             boardHelper.CreateBoard(4, 4);
