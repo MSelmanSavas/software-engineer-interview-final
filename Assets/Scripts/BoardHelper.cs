@@ -19,6 +19,11 @@ public class BoardHelper
         _board.FillBoard(matchableTypes);
     }
 
+    public Board CreateBoardByBoardCreator<T>(int width, int height, T boardCreator) where T : IBoardCreator
+    {
+        return boardCreator.CreateBoard(width, height);
+    }
+
     public bool CheckMatchExists(BoardPosition first, BoardPosition second)
     {
         // TODO: Task 2
