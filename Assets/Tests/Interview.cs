@@ -207,6 +207,48 @@ namespace Tests
         }
 
         [Test]
+        public void Test_AnyIllegalMovePresent_NoIllegalMoves()
+        {
+            var boardHelper = BoardHelper.Instance;
+            var board = boardHelper.CreateBoard(4, 4);
+
+            var matchableTypes = new[]
+            {
+                1, 2, 3, 4,
+                2, 3, 4, 1,
+                3, 4, 1, 2,
+                4, 1, 2, 3
+            };
+
+            boardHelper.FillBoardWithMatchableTypes(matchableTypes);
+            IIllegalPositionChecker illegalPositionChecker = new OrthagonalIllegalPositionChecker();
+            bool illegalMovePresent = illegalPositionChecker.CheckAnyIllegalPosition(board);
+
+            Assert.IsFalse(illegalMovePresent);
+        }
+
+        [Test]
+        public void Test_AnyIllegalMovePresent_IllgalMovePresent()
+        {
+            var boardHelper = BoardHelper.Instance;
+            var board = boardHelper.CreateBoard(4, 4);
+
+            var matchableTypes = new[]
+            {
+                1, 2, 3, 4,
+                2, 3, 4, 1,
+                3, 4, 1, 1,
+                4, 1, 2, 1
+            };
+
+            boardHelper.FillBoardWithMatchableTypes(matchableTypes);
+            IIllegalPositionChecker illegalPositionChecker = new OrthagonalIllegalPositionChecker();
+            bool illegalMovePresent = illegalPositionChecker.CheckAnyIllegalPosition(board);
+
+            Assert.IsTrue(illegalMovePresent);
+        }
+
+        [Test]
         public void Test_CreateRandomBoardWithOneOrMorePossibleMatches_10Times()
         {
             IIllegalPositionChecker illegalPositionChecker = new OrthagonalIllegalPositionChecker();

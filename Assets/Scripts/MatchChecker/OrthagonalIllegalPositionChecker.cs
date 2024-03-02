@@ -37,9 +37,9 @@ public class OrthagonalIllegalPositionChecker : IIllegalPositionChecker
             Vector2Int matchPatternSize = matchPattern.MatchSize;
             Vector2Int iterationAreaSize = boardSize - matchPatternSize;
 
-            for (int x = 0; x < iterationAreaSize.x; x++)
+            for (int x = 0; x <= iterationAreaSize.x; x++)
             {
-                for (int y = 0; y < iterationAreaSize.y; y++)
+                for (int y = 0; y <= iterationAreaSize.y; y++)
                 {
                     Vector2Int checkPivotPoint = new Vector2Int(x, y);
                     BoardItem boardItemToCheck = null;
