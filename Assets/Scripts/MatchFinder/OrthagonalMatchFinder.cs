@@ -92,8 +92,9 @@ sealed class OrthagonalMatchFinder : IMatchFinder
 
         if (foundMatchedBoardItems.Count >= _minToMatchCount)
         {
-            foundMatchDatas.Add(new MatchData(first, second, foundMatchedBoardItems));
-            foundMatchDatas.Add(new MatchData(second, first, foundMatchedBoardItems));
+            HashSet<BoardItem> foundItems = new HashSet<BoardItem>(foundMatchedBoardItems);
+            foundMatchDatas.Add(new MatchData(first, second, foundItems));
+            foundMatchDatas.Add(new MatchData(second, first, foundItems));
         }
 
         #endregion
@@ -108,8 +109,9 @@ sealed class OrthagonalMatchFinder : IMatchFinder
 
         if (foundMatchedBoardItems.Count >= _minToMatchCount)
         {
-            foundMatchDatas.Add(new MatchData(first, second, foundMatchedBoardItems));
-            foundMatchDatas.Add(new MatchData(second, first, foundMatchedBoardItems));
+            HashSet<BoardItem> foundItems = new HashSet<BoardItem>(foundMatchedBoardItems);
+            foundMatchDatas.Add(new MatchData(first, second, foundItems));
+            foundMatchDatas.Add(new MatchData(second, first, foundItems));
         }
 
         #endregion
@@ -124,8 +126,9 @@ sealed class OrthagonalMatchFinder : IMatchFinder
 
         if (foundMatchedBoardItems.Count >= _minToMatchCount)
         {
-            foundMatchDatas.Add(new MatchData(first, second, foundMatchedBoardItems));
-            foundMatchDatas.Add(new MatchData(second, first, foundMatchedBoardItems));
+            HashSet<BoardItem> foundItems = new HashSet<BoardItem>(foundMatchedBoardItems);
+            foundMatchDatas.Add(new MatchData(first, second, foundItems));
+            foundMatchDatas.Add(new MatchData(second, first, foundItems));
         }
 
         #endregion
@@ -140,8 +143,9 @@ sealed class OrthagonalMatchFinder : IMatchFinder
 
         if (foundMatchedBoardItems.Count >= _minToMatchCount)
         {
-            foundMatchDatas.Add(new MatchData(first, second, foundMatchedBoardItems));
-            foundMatchDatas.Add(new MatchData(second, first, foundMatchedBoardItems));
+            HashSet<BoardItem> foundItems = new HashSet<BoardItem>(foundMatchedBoardItems);
+            foundMatchDatas.Add(new MatchData(first, second, foundItems));
+            foundMatchDatas.Add(new MatchData(second, first, foundItems));
         }
 
         #endregion
