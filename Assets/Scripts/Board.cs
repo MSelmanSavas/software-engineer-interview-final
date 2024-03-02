@@ -78,7 +78,7 @@ public class Board
         {
             for (int y = 0; y < Height; y++)
             {
-                stringBuilder.Append(_boardItems.Get(new Vector2Int(x, y), Width).MatchableType + ",");
+                stringBuilder.Append(_boardItems.Get(new Vector2Int(x, y), Height).MatchableType + ",");
             }
 
             stringBuilder.AppendLine();

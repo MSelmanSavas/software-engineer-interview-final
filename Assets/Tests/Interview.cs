@@ -210,24 +210,36 @@ namespace Tests
         [Test]
         public void Test_CreateRandomBoardWithOneOrMorePossibleMatches()
         {
+            IIllegalPositionChecker illegalPositionChecker = new OrthagonalIllegalPositionChecker();
+            IBoardCreator boardCreator = new RandomBoardCreator();
+
             for (int i = 0; i < 10000; i++)
             {
                 var boardHelper = BoardHelper.Instance;
 
-                IBoardCreator boardCreator = new RandomBoardCreator();
-
-                string boardDebug = "";
                 var createdBoard = boardHelper.CreateBoardByBoardCreator(4, 4, boardCreator);
                 var matches = boardHelper.FindAllPossibleMatches(createdBoard);
 
-                boardDebug += createdBoard.DebugBoard();
-                boardDebug += "\n" + matches.Count;
-
-                // UnityEngine.Debug.Log(boardDebug);
-
                 if (matches.Count <= 0)
                 {
+                    string boardDebug = "";
+                    boardDebug += createdBoard.DebugBoard();
+                    boardDebug += "\n" + matches.Count;
+                    UnityEngine.Debug.Log(boardDebug);
+
                     UnityEngine.Debug.Log($"Found board with no match at : {i}!");
+                    Assert.IsTrue(false);
+                    return;
+                }
+
+                if (illegalPositionChecker.CheckAnyIllegalPosition(createdBoard))
+                {
+                    string boardDebug = "";
+                    boardDebug += createdBoard.DebugBoard();
+                    boardDebug += "\n" + matches.Count;
+                    UnityEngine.Debug.Log(boardDebug);
+
+                    UnityEngine.Debug.Log($"Found board with illegal match at : {i}!");
                     Assert.IsTrue(false);
                     return;
                 }
