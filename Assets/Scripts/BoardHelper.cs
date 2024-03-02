@@ -19,7 +19,7 @@ public class BoardHelper
         _board.FillBoard(matchableTypes);
     }
 
-    public Board CreateBoardByBoardCreator<T>(int width, int height, T boardCreator) where T : IBoardCreator
+    public Board CreateBoardByBoardCreator<T>(int width, int height, T boardCreator) where T : class, IBoardCreator
     {
         return boardCreator.CreateBoard(width, height);
     }
@@ -35,6 +35,13 @@ public class BoardHelper
     {
         // TODO: Task 3
         IMatchFinder matchFinder = new OrthagonalMatchFinder(_board);
+        return matchFinder.FindAllPossibleMatches();
+    }
+
+    public IList<MatchData> FindAllPossibleMatches(Board givenBoard)
+    {
+        // TODO: Task 3
+        IMatchFinder matchFinder = new OrthagonalMatchFinder(givenBoard);
         return matchFinder.FindAllPossibleMatches();
     }
 

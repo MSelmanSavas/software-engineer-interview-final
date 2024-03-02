@@ -8,5 +8,10 @@ namespace ArrayExtensions
         {
             return array[index.x * maxWidth + index.y];
         }
+
+        public static void Set<T>(this T[] array, T value, Vector2Int index, int maxWidth)
+        {
+            array[index.x * maxWidth + index.y] = value;
+        }
     }
 }

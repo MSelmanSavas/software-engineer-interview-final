@@ -1,5 +1,7 @@
+using System.Diagnostics;
 using System.Linq;
 using NUnit.Framework;
+using UnityEditor.VersionControl;
 
 namespace Tests
 {
@@ -202,6 +204,36 @@ namespace Tests
             var matches = boardHelper.FindAllPossibleMatches();
 
             Assert.AreEqual(0, matches.Count);
+        }
+
+
+        [Test]
+        public void Test_CreateRandomBoardWithOneOrMorePossibleMatches()
+        {
+            for (int i = 0; i < 10000; i++)
+            {
+                var boardHelper = BoardHelper.Instance;
+
+                IBoardCreator boardCreator = new RandomBoardCreator();
+
+                string boardDebug = "";
+                var createdBoard = boardHelper.CreateBoardByBoardCreator(4, 4, boardCreator);
+                var matches = boardHelper.FindAllPossibleMatches(createdBoard);
+
+                boardDebug += createdBoard.DebugBoard();
+                boardDebug += "\n" + matches.Count;
+
+                // UnityEngine.Debug.Log(boardDebug);
+
+                if (matches.Count <= 0)
+                {
+                    UnityEngine.Debug.Log($"Found board with no match at : {i}!");
+                    Assert.IsTrue(false);
+                    return;
+                }
+            }
+
+            Assert.IsTrue(true);
         }
     }
 }

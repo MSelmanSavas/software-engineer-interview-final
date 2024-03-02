@@ -1,3 +1,4 @@
+using ArrayExtensions;
 using UnityEngine;
 
 public class Board
@@ -68,4 +69,21 @@ public class Board
 
     public bool IsInsideBoard(Vector2Int index) => IsInsideBoard(index.x, index.y);
     public bool IsInsideBoard(BoardPosition position) => IsInsideBoard(position.X, position.Y);
+
+    public string DebugBoard()
+    {
+        System.Text.StringBuilder stringBuilder = new(Width * Height);
+        stringBuilder.AppendLine();
+        for (int x = 0; x < Width; x++)
+        {
+            for (int y = 0; y < Height; y++)
+            {
+                stringBuilder.Append(_boardItems.Get(new Vector2Int(x, y), Width).MatchableType + ",");
+            }
+
+            stringBuilder.AppendLine();
+        }
+
+        return stringBuilder.ToString();
+    }
 }
